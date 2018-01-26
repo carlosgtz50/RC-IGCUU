@@ -19,7 +19,7 @@ if(isset($_POST['frmidCategoria']) and !empty($_POST['frmidCategoria'])){
 $return_arrayPersonas = array();
 
 // Read JSON file
-$json = file_get_contents('datos/listadoPersonas2.json');
+$json = file_get_contents('./listadoPersonas2.json', FILE_USE_INCLUDE_PATH);
 
 
 //Decode JSON
