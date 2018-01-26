@@ -27,7 +27,6 @@
   <plugin name="cordova-plugin-device-orientation" spec="~2.0.0" />
   <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
 <plugin name="cordova-plugin-file" spec="~6.0.1" />
-<plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
 <plugin name="cordova-plugin-geolocation" spec="~4.0.1" />
 <plugin name="cordova-plugin-globalization" spec="~1.0.9" />
 <plugin name="cordova-plugin-inappbrowser" spec="~2.0.1" />
