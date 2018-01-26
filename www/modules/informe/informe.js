@@ -35,6 +35,8 @@ informeGob = function() {
                 data : parametros,
                 success : function(resp){
 
+                    alert('Correcto');
+
                     $table.bootstrapTable({
                         data: resp,
                         exportDataType: 'all'
