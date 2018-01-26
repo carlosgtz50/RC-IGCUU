@@ -1,4 +1,4 @@
-function MostrarDetalle(control){
+    function MostrarDetalle(control){
 
     var contenido = $(control).attr("datosUrl")
 
@@ -44,7 +44,11 @@ informeGob = function() {
 
                     $('#nombrePersona').focus();
                     
+                },
+                error: function(e) {
+                    alert('Error: ' + e.message);
                 }
+
             });
         },
 

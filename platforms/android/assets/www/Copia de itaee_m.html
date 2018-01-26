@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+
+<html  lang="es-MX">
+<head>
+	<title>SEDECO BC</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="script" http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta name="script" http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+
+    
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/styles.icons.css">  
+    
+    <link rel="stylesheet" href="js/slide_panel/css/style.css"> <!-- Resource style -->
+    <script src="js/slide_panel/js/modernizr.js"></script> <!-- Modernizr -->
+    
+    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css">
+
+    <script src="js/amcharts/amcharts.js"></script>
+    <script src="js/amcharts/serial.js"></script>
+    <script src="js/amcharts/themes/light.js"></script>
+    <script src="js/amcharts/plugins/export/export.js"></script>
+
+    <script src="sedeco/js/ios-orientationchange-fix.js"></script>
+    <script src="sedeco/js/localforage.js"></script>
+    <script src="sedeco/js/modernizr.custom.js"></script>
+    <script src="sedeco/js/d3.min.js"></script>
+    <script src="sedeco/js/d3plus.min.js"></script>
+    <script src="sedeco/js/leon.js"></script>
+
+
+    <style>
+	    #chartdiv {
+  		    width: 100%;
+  		    height: 500px;
+	    }
+    </style>
+
+	<script type="text/javascript" src="soapclient.js"></script>
+    <script type="text/javascript">
+
+        //var url = document.location.href.replace("index.html", "webservicesedeco.asmx");
+        var url = "http://74.208.64.218/net/webservicesedeco.asmx";
+
+        //alert(document.location.href.replace("index.html", "webservicedemo.asmx"));
+
+
+        function ConsultaIndicadoresPrincipales() {
+            var pl = new SOAPClientParameters();
+            SOAPClient.invoke(url, "ConsultaIndicadoresPrincipales", pl, true, ConsultaIndicadoresPrincipales_callBack);
+        }
+        function ConsultaIndicadoresPrincipales_callBack(r) {
+            document.getElementById('containerIndicadores').innerHTML = r;
+        }
+
+
+        // utils
+        function toggle(id) {
+            var d = document.getElementById(id);
+            if (d != null)
+                d.className = (d.className == "h") ? "s" : "h";
+        }
+
+	</script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ConsultaIndicadoresPrincipales();
+        });
+    </script>
+</head>
+<body >
+    <div>
+        <form id="frmIndex" name="frmIndex" action="#" method="post">    
+        
+            <a href="#0" class="cd-btn">
+	            <div class="Boton_filtro">		
+		            <i class="fa fa-filter"></i>&nbsp Filtros
+	            </div>
+            </a>
+
+        <div class="cd-panel from-right">
+		<header class="cd-panel-header">
+			<h1><i class="fa fa-bars"></i>&nbsp Filtros</h1>
+			<a href="#0" class="cd-panel-close">Close</a>
+		</header>
+
+		<div class="cd-panel-container">
+			<div class="cd-panel-content">
+				<div id="accordion" class="panel-group home-accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#collapse1" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle">
+									Estatal
+								</a>
+							</h4>
+						</div>
+						<div class="panel-collapse in" id="collapse1">
+							<div class="panel-body">
+								<div class="build_btn" >
+                    							<span class="build_title" id="Span4" onclick="app_select(this.id)" title="Estatal">Estatal</span>
+		    							<input class='app_links short icon tiny rings help clSectores' type="radio" onclick="ActivaSector(this);" value="0" name="chkSector" id="chkEstatal" checked="checked" />
+                						</div>
+								<div class="build_btn" >
+                    							<span class="build_title" title="Sector Primario">Sector Primario</span>
+		    							<input class='app_links short icon tiny rings help clSectores' type="radio" onclick="ActivaSector(this);" value="1" name="chkSector" id="chkPrimario" />
+                						</div>
+								<div class="build_btn" >
+                    							<span class="build_title" title="Sector Secundario">Sector Secundario</span>
+		    							<input class='app_links short icon tiny rings help clSectores' type="radio" onclick="ActivaSector(this);" value="2" name="chkSector" id="chkSecundario" />
+                						</div>
+								<div class="build_btn" >
+                    							<span class="build_title" title="Sector Terciario">Sector Terciario</span>
+		    							<input class='app_links short icon tiny rings help clSectores' type="radio" onclick="ActivaSector(this);" value="3" name="chkSector" id="chkTerciario" />
+                						</div>
+								<input type="textbox" name="frmFSector" id="frmFSector" value="[frmFSector,Form]" hidden />
+							</div>
+						</div>
+					</div>
+	
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#collapse2" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed">
+									Promedio Nacional
+								</a>
+							</h4>
+						</div>
+						<div class="panel-collapse collapse" id="collapse2">
+							<div class="panel-body">
+								<div class="build_btn" >
+									<span class="build_title" id="group_14" title="Activar Promedio">Activar Promedio</span>
+		    							<input class='app_links short icon tiny rings help' type="checkbox" onclick="ActivaNacional();" name="chkPromedio" id="chkPromedio" />
+		    							<input type="textbox" name="frmFPromNacional" id="frmFPromNacional" value="[frmFPromNacional,Form]" hidden />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#collapse3" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed">
+									Promedio Frontera Norte
+								</a>
+							</h4>
+						</div>
+						<div class="panel-collapse collapse" id="collapse3">
+							<div class="panel-body">
+								{SUBQUERY, Name="qryFronteraNorte", Query="SELECT  DISTINCT Entidad AS EntFrontera,
+														LEFT( Entidad, 2) AS Abr
+													FROM SEDECO_Colores_Entidades
+													WHERE Frontera = 1
+													AND Entidad <> 'Baja California'" , 
+									Format="<div class='build_btn' >
+						                    			<span class='build_title' id='Span2[EntFrontera]' title='[EntFrontera]'>[EntFrontera]</span>
+						                    			<input class='app_links short icon tiny rings help PromFrontera' type='checkbox' onclick='ActivaFrontera();' value='[EntFrontera]' name='chkFrontera[Abr]' id='chkFrontera[Abr]' />
+						                		</div>", UseCache="false"}
+									<input type="textbox" name="frmFFronteras" id="frmFFronteras" value="[frmFFronteras,Form]" hidden />
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="#collapse4" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed">
+									Promedio Bajio
+								</a>
+							</h4>
+						</div>
+						<div class="panel-collapse collapse" id="collapse4">
+							<div class="panel-body">
+								{SUBQUERY, Name="qryBajio", Query="SELECT DISTINCT Entidad AS EntBajio,
+														LEFT( Entidad, 2) AS AbrBajio
+												FROM SEDECO_Colores_Entidades
+												WHERE Bajio = 1" , 
+										Format="<div class='build_btn' >
+							                    			<span class='build_title' id='Span2[EntBajio]' onclick='app_select(this.id)' title='[EntBajio]'>[EntBajio]</span>
+							                    			<input class='app_links short icon tiny rings help PromBajio' type='checkbox' onclick='ActivaBajio();' value='[EntBajio]' name='chkBajio[AbrBajio]' id='chkBajio[AbrBajio]' />
+							                		</div>", UseCache="false"}
+
+										<input type="textbox" name="frmFBajio" id="frmFBajio" value="[frmFBajio,Form]" hidden />
+							</div>
+						</div>
+					</div>
+				</div>
+			    </div> <!-- cd-panel-content -->
+		    </div> <!-- cd-panel-container -->
+	    </div> <!-- cd-panel -->
+
+
+        <div style="width:100%;margin-bottom:10px;margin-top:15px;margin-left:20px;">
+		    <div class="Titulo" style="margin-bottom:15px;font-size:20px;font-weight:bold;">
+			    [Descripcion] - [SectorT]
+		    </div>
+
+		    <div class="leon button medium" id="Div14" onclick="FiltraTiempo('Actual');" style="border-color: rgb(170, 170, 170); color: rgb(102, 102, 102); {IIF, "'[frmFTiempo,Form]'='' OR '[frmFTiempo,Form]'='Actual'", "background: #A2C5EF;", "background: #FFFFFF;"}">
+			    Ultimo Año Cargado
+		    </div>
+
+		    <div class="leon button medium" id="Div1" onclick="FiltraTiempo('3Periodos');" style="border-color: rgb(170, 170, 170); color: rgb(102, 102, 102); {IIF, "'[frmFTiempo,Form]'='3Periodos'", "background: #A2C5EF;", "background: #FFFFFF;"}">
+			    Ultimos 3 Años Cargado
+		    </div>
+
+		    <div class="leon button medium" id="Div2" onclick="FiltraTiempo('Historico');" style="border-color: rgb(170, 170, 170); color: rgb(102, 102, 102); {IIF, "'[frmFTiempo,Form]'='Historico'", "background: #A2C5EF;", "background: #FFFFFF;"}">
+			    Histórico
+		    </div>
+		    <input type="textbox" name="frmFTiempo" id="frmFTiempo" value="[frmFTiempo,Form]" hidden />
+	    </div>
+
+	    <div id="chartdiv"></div>
+
+	    <div class="fuente">
+		    Fuente: SEDECO con Datos de ...
+	    </div>
+
+
+
+        </form>   
+    </div>
+
+    
+    <script src="js/slide_panel/js/main.js"></script> 
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html  lang="es-MX">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oswald:400,700|Droid+Serif:400,400italic,700,700italic&subset=latin' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300&#038;ver=3.9.1' type='text/css' media='all' />
+
+
+    <link rel='stylesheet' href='style.css' type='text/css' media='all' />
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    
+    <link rel="stylesheet" href="js/slide_panel/css/style.css"> <!-- Resource style -->
+    <script src="js/slide_panel/js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/slide_panel/js/main.js"></script> 
+
+    <style type="text/css">
+       html, body, iframe { margin:0; padding:0; height:100%; }
+       iframe { display:block; width:100%; border:none; margin-top:40px;}
+
+        body {
+	        margin-left: 0px;
+	        margin-top: 0px;
+	        margin-right: 0px;
+	        margin-bottom: 0px;
+            font-family: "Oswald", arial, sans-serif;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+        function adjustIframes() {
+            $('iframe').each(function () {
+                var
+                $this = $(this),
+                proportion = $this.data('proportion'),
+                w = $this.attr('width'),
+                actual_w = $this.width();
+
+                if (!proportion) {
+                    proportion = $this.attr('height') / w;
+                    $this.data('proportion', proportion);
+                }
+
+                if (actual_w != w) {
+                    $this.css('height', Math.round(actual_w * proportion) + 'px');
+                }
+            });
+        }
+        $(window).on('resize load', adjustIframes);
+
+    </script>
+    <title>ITAEE</title>
+</head>
+
+<body text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+    <div class="page-header">
+        <div class="row">
+            <a href="index.html"><div class="return"><img class="menu-icon" src="img/back.png" height="60px" /><span class="titulo">ITAEE</span></div></a>
+            <div class="large-12 columns">
+            <nav class="top-bar">
+                <a href="#0" class="cd-btn"><img class="menu-icon" src="img/menu.png" height="60px" /></a>
+            </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="cd-panel from-right">
+		<header class="cd-panel-header">
+			<h1 style="margin-top:-2px;">Menu</h1>
+			<a href="#0" class="cd-panel-close">Cerrar</a>
+		</header>
+
+		<div class="cd-panel-container">
+			<div class="cd-panel-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam accusamus obcaecati nisi eveniet quo veniam quibusdam veritatis autem accusantium doloribus nam mollitia maxime explicabo nemo quae aspernatur impedit cupiditate dicta molestias consectetur, sint reprehenderit maiores. Tempora, exercitationem, voluptate. Sapiente modi officiis nulla sed ullam, amet placeat, illum necessitatibus, eveniet dolorum et maiores earum tempora, quas iste perspiciatis quibusdam vero accusamus veritatis. Recusandae sunt, repellat incidunt impedit tempore iusto, nostrum eaque necessitatibus sint eos omnis! Beatae, itaque, in. Vel reiciendis consequatur saepe soluta itaque aliquam praesentium, neque tempora. Voluptatibus sit, totam rerum quo ex nemo pariatur tempora voluptatem est repudiandae iusto, architecto perferendis sequi, asperiores dolores doloremque odit. Libero, ipsum fuga repellat quae numquam cumque nobis ipsa voluptates pariatur, a rerum aspernatur aliquid maxime magnam vero dolorum omnis neque fugit laboriosam eveniet veniam explicabo, similique reprehenderit at. Iusto totam vitae blanditiis. Culpa, earum modi rerum velit voluptatum voluptatibus debitis, architecto aperiam vero tempora ratione sint ullam voluptas non! Odit sequi ipsa, voluptatem ratione illo ullam quaerat qui, vel dolorum eligendi similique inventore quisquam perferendis reprehenderit quos officia! Maxime aliquam, soluta reiciendis beatae quisquam. Alias porro facilis obcaecati et id, corporis accusamus? Ab porro fuga consequatur quisquam illo quae quas tenetur.</p>
+			</div> <!-- cd-panel-content -->
+		</div> <!-- cd-panel-container -->
+	</div>
+    <script src="js/slide_panel/js/main.js"></script> 
+    
+    
+    <iframe src="http://sedeco.regionescompetitivas.com/sedeco/itaee_m" scrolling="auto" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0">
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+
+<html  lang="es-MX">
+<head>
+	<title>SEDECO BC</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="script" http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta name="script" http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+
+    <link rel='stylesheet' href='style.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oswald:400,700|Droid+Serif:400,400italic,700,700italic&subset=latin' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300&#038;ver=3.9.1' type='text/css' media='all' />
+
+    
+    <link rel='stylesheet' id='styles-css' href='http://sedeco.regionescompetitivas.com/SEDECO/Portals/0/ind_nuevos_style/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='responsive-css' href='http://sedeco.regionescompetitivas.com/SEDECO/Portals/0/ind_nuevos_style/responsive.css' type='text/css' media='only screen and (max-width: 962px)' />
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    
+    <link rel="stylesheet" href="js/slide_panel/css/style.css"> <!-- Resource style -->
+    <script src="js/slide_panel/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <script type="text/javascript" src="PushNotification.js"></script>
+
+    <style type='text/css' media='screen'>
+        body {
+            font-family: "Oswald", arial, sans-serif;
+        }
+    </style>
+
+    
+
+	<script type="text/javascript" src="soapclient.js"></script>
+    <script type="text/javascript">
+	
+	//var url = document.location.href.replace("index.html", "webservicesedeco.asmx");
+	var url = "http://74.208.64.218/net/webservicesedeco.asmx";
+
+	    //alert(document.location.href.replace("index.html", "webservicedemo.asmx"));
+	
+
+	function ConsultaIndicadoresPrincipales()
+	{
+		var pl = new SOAPClientParameters();
+		SOAPClient.invoke(url, "ConsultaIndicadoresPrincipales", pl, true, ConsultaIndicadoresPrincipales_callBack);
+	}
+	function ConsultaIndicadoresPrincipales_callBack(r)
+	{
+	    document.getElementById('containerIndicadores').innerHTML = r;
+	}
+
+	
+	// utils
+	function toggle(id) 
+	{
+		var d = document.getElementById(id);
+		if(d != null)
+			d.className = (d.className == "h") ? "s" : "h"; 
+	} 
+
+	</script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ConsultaIndicadoresPrincipales();
+        });
+    </script>
+</head>
+<body class="home page page-id-5 page-template-default custom-background">
+    
+<div>
+    <form id="frmIndex" name="frmIndex" action="#" method="post">    
+        
+        <!--<div class="mobile-menu">
+            <ul id="menu-mainmenu-1" class="left">
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="index.html">INDICADORES</a></li>
+                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="Noticias.html">NOTICIAS</a></li>
+                <li class="last-option menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="contacto.html">CONTACTO</a></li>
+            </ul>
+        </div>-->
+        <!-- End Mobile Menu -->
+
+            <div class="page-header">
+                <div class="row">
+                    <div class="logo"></div>
+                    <div class="large-12 columns">
+                    <nav class="top-bar">
+                        <a href="#0" class="cd-btn menu-icon"><img src="img/menu.png" height="60px" /></a>
+                    </nav>
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="cd-panel from-right">
+		    <header class="cd-panel-header">
+			    <h1>Menu</h1>
+			    <a href="#0" class="cd-panel-close">Cerrar</a>
+		    </header>
+
+		    <div class="cd-panel-container">
+			    <div class="cd-panel-content">
+				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam accusamus obcaecati nisi eveniet quo veniam quibusdam veritatis autem accusantium doloribus nam mollitia maxime explicabo nemo quae aspernatur impedit cupiditate dicta molestias consectetur, sint reprehenderit maiores. Tempora, exercitationem, voluptate. Sapiente modi officiis nulla sed ullam, amet placeat, illum necessitatibus, eveniet dolorum et maiores earum tempora, quas iste perspiciatis quibusdam vero accusamus veritatis. Recusandae sunt, repellat incidunt impedit tempore iusto, nostrum eaque necessitatibus sint eos omnis! Beatae, itaque, in. Vel reiciendis consequatur saepe soluta itaque aliquam praesentium, neque tempora. Voluptatibus sit, totam rerum quo ex nemo pariatur tempora voluptatem est repudiandae iusto, architecto perferendis sequi, asperiores dolores doloremque odit. Libero, ipsum fuga repellat quae numquam cumque nobis ipsa voluptates pariatur, a rerum aspernatur aliquid maxime magnam vero dolorum omnis neque fugit laboriosam eveniet veniam explicabo, similique reprehenderit at. Iusto totam vitae blanditiis. Culpa, earum modi rerum velit voluptatum voluptatibus debitis, architecto aperiam vero tempora ratione sint ullam voluptas non! Odit sequi ipsa, voluptatem ratione illo ullam quaerat qui, vel dolorum eligendi similique inventore quisquam perferendis reprehenderit quos officia! Maxime aliquam, soluta reiciendis beatae quisquam. Alias porro facilis obcaecati et id, corporis accusamus? Ab porro fuga consequatur quisquam illo quae quas tenetur.</p>
+
+				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque similique, at excepturi adipisci repellat ut veritatis officia, saepe nemo soluta modi ducimus velit quam minus quis reiciendis culpa ullam quibusdam eveniet. Dolorum alias ducimus, ad, vitae delectus eligendi, possimus magni ipsam repudiandae iusto placeat repellat omnis veritatis adipisci aliquam hic ullam facere voluptatibus ratione laudantium perferendis quos ut. Beatae expedita, itaque assumenda libero voluptatem adipisci maiores voluptas accusantium, blanditiis saepe culpa laborum iusto maxime quae aperiam fugiat odit consequatur soluta hic. Sed quasi beatae quia repellendus, adipisci facilis ipsa vel, aperiam, consequatur eaque mollitia quaerat. Iusto fugit inventore eveniet velit.</p>
+
+				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque similique, at excepturi adipisci repellat ut veritatis officia, saepe nemo soluta modi ducimus velit quam minus quis reiciendis culpa ullam quibusdam eveniet. Dolorum alias ducimus, ad, vitae delectus eligendi, possimus magni ipsam repudiandae iusto placeat repellat omnis veritatis adipisci aliquam hic ullam facere voluptatibus ratione laudantium perferendis quos ut. Beatae expedita, itaque assumenda libero voluptatem adipisci maiores voluptas accusantium, blanditiis saepe culpa laborum iusto maxime quae aperiam fugiat odit consequatur soluta hic. Sed quasi beatae quia repellendus, adipisci facilis ipsa vel, aperiam, consequatur eaque mollitia quaerat. Iusto fugit inventore eveniet velit.</p>
+
+				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magnam accusamus obcaecati nisi eveniet quo veniam quibusdam veritatis autem accusantium doloribus nam mollitia maxime explicabo nemo quae aspernatur impedit cupiditate dicta molestias consectetur, sint reprehenderit maiores. Tempora, exercitationem, voluptate. Sapiente modi officiis nulla sed ullam, amet placeat, illum necessitatibus, eveniet dolorum et maiores earum tempora, quas iste perspiciatis quibusdam vero accusamus veritatis. Recusandae sunt, repellat incidunt impedit tempore iusto, nostrum eaque necessitatibus sint eos omnis! Beatae, itaque, in. Vel reiciendis consequatur saepe soluta itaque aliquam praesentium, neque tempora. Voluptatibus sit, totam rerum quo ex nemo pariatur tempora voluptatem est repudiandae iusto, architecto perferendis sequi, asperiores dolores doloremque odit. Libero, ipsum fuga repellat quae numquam cumque nobis ipsa voluptates pariatur, a rerum aspernatur aliquid maxime magnam vero dolorum omnis neque fugit laboriosam eveniet veniam explicabo, similique reprehenderit at. Iusto totam vitae blanditiis. Culpa, earum modi rerum velit voluptatum voluptatibus debitis, architecto aperiam vero tempora ratione sint ullam voluptas non! Odit sequi ipsa, voluptatem ratione illo ullam quaerat qui, vel dolorum eligendi similique inventore quisquam perferendis reprehenderit quos officia! Maxime aliquam, soluta reiciendis beatae quisquam. Alias porro facilis obcaecati et id, corporis accusamus? Ab porro fuga consequatur quisquam illo quae quas tenetur.</p>
+			    </div> <!-- cd-panel-content -->
+		    </div> <!-- cd-panel-container -->
+	    </div> <!-- cd-panel -->
+          
+        <div style="font-family: Oswald, arial, sans-serif; width: 100%; text-align: center; font-size: 50px; font-weight: bold; margin-top:100px; padding-bottom: 25px; letter-spacing: -1px; color: #575756; line-height: 60px;">SEMAFORO ECONÓMICO</div>
+        <div style="font-family: Oswald, arial, sans-serif; width: 100%; text-align: center; font-size: 40px; padding-bottom: 15px; letter-spacing: -1px; color: #1392F1; line-height: 44px;">ESTADO DE BAJA CALIFORNIA</div>
+
+        <div id="containerIndicadores" class="container">
+            
+        </div>
+    </form>
+
+</div>     
+    
+    <script src="js/slide_panel/js/main.js"></script> 
+    <!--<script type='text/javascript' src='js/foundation.min.js'></script>
+<script type='text/javascript' src='js/vendor/iscroll.js'></script>
+<script type='text/javascript' src='js/plastic2.js'></script>
+<script type='text/javascript' src='js/comment-reply.min.js'></script>
+<script>$(document).foundation();</script>-->
+</body>
+</html>
