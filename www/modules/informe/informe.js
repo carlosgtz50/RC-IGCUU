@@ -6,7 +6,7 @@ function MostrarDetalle(control){
 
     $('#modalDetalle').modal('show').on('hidden.bs.modal', function () {
         
-        $('#bodyModalDetalle').html("<img src='assets/img/loaders/svg-loaders/bars.svg' alt='' class='loading'><span> &nbsp;&nbsp;Cargando... </span>");
+        $('#bodyModalDetalle').html("<img src='img/loading-spinner-grey.gif' alt='' class='loading'><span> &nbsp;&nbsp;Cargando... </span>");
     });
 };
 
