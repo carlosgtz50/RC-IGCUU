@@ -18,7 +18,7 @@ if(isset($_POST['frmidCategoria']) and !empty($_POST['frmidCategoria'])){
 
 $fila = 1;
 
-f (($gestor = fopen("BaseRegistro.csv", "r")) !== FALSE) {
+f (($gestor = fopen("file:///android_asset/www/BaseRegistro.csv", "r")) !== FALSE) {
 
 	echo $gestor;
 
