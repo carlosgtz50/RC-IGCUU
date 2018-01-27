@@ -31,20 +31,20 @@ informeGob = function() {
 
             $.ajax({
                 type : "POST",
-                url : "datos/listadoPersonas.php",
+                url : "datos/listadoCSV.php",
                 data : parametros,
                 success : function(resp){
 
-                    alert('Correcto');
+                    console.log(resp);
 
-                    $table.bootstrapTable({
-                        data: resp,
-                        exportDataType: 'all'
-                    });
+                    // $table.bootstrapTable({
+                    //     data: resp,
+                    //     exportDataType: 'all'
+                    // });
 
-                    $table.bootstrapTable('refresh', {silent: true});   
+                    // $table.bootstrapTable('refresh', {silent: true});   
 
-                    $('#nombrePersona').focus();
+                    // $('#nombrePersona').focus();
                     
                 },
                 error: function(e) {
