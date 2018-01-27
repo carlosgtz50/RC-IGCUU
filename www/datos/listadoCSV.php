@@ -17,20 +17,23 @@ if(isset($_POST['frmidCategoria']) and !empty($_POST['frmidCategoria'])){
 
 
 $fila = 1;
-if (($gestor = fopen("../BaseRegistro.csv", "r")) !== FALSE) {
 
-    while (($datos = fgetcsv($gestor, 0, ",")) !== FALSE) {
+f (($gestor = fopen("BaseRegistro.csv", "r")) !== FALSE) {
 
-        $fila++;
+	echo $gestor;
+
+    // while (($datos = fgetcsv($gestor, 0, ",")) !== FALSE) {
+
+    //     $fila++;
 
 
-        echo $datos[0];
-        break; 
+    //     echo $datos[0];
+    //     break; 
 
-        // for ($c=0; $c < $numero; $c++) {
-        //     echo $datos[$c] . "<br />\n";
-        // }
-    }
+    //     // for ($c=0; $c < $numero; $c++) {
+    //     //     echo $datos[$c] . "<br />\n";
+    //     // }
+    // }
 
     fclose($gestor);
 }
