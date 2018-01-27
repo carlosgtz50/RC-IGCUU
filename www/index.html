@@ -33,6 +33,91 @@
 
         <!--end::Base Styles -->
         <link rel="shortcut icon" href="assets/RC/RC5/media/img/logo/favicon.ico" />
+
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <script type="text/javascript">
+            document.addEventListener("deviceready",onDeviceReady,false);
+            
+            function onDeviceReady() {                              
+                var db = window.openDatabase("Database", "1.0", "Informe", 2000000);
+                db.transaction(queryDB, errorCB, successCB);
+            }
+            
+            function queryDB(tx) {
+                tx.executeSql("Create table if not exists Asistentes (idPersona Integer, Confirmacion TEXT, Nombre TEXT, ApellidoPaterno TEXT, ApellidoMaterno TEXT, Sector TEXT, Zona TEXT, Fila TEXT, Asiento TEXT, Categoria TEXT, Organizacion TEXT, Acompanantes TEXT, Estacionamiento TEXT, Foto TEXT )");
+                
+                tx.executeSql("Insert into Asistentes VALUES (1, 'No', 'Carlos', 'Gutierrez', 'Lopez', 'Sector', 'Zona', 'Fila', 'Asiento', 'Categoria', 'Organizacion', 'Acompanates', 'Estacionamiento', 'Foto')");
+
+                /*tx.executeSql("Insert into Demo VALUES (2, 'HG', 'ABDFGDFGSC')");
+                tx.executeSql("Insert into Demo VALUES (3, 'LSDFD', 'ADFGDBDFC')");
+                tx.executeSql("Insert into Demo VALUES (4, 'RWE', 'RTETABC')");
+                tx.executeSql("Insert into Demo VALUES (5, 'SDFD', 'ADFGBC')");
+                tx.executeSql("Insert into Demo VALUES (6, 'DFGDD', 'ABDFFC')");
+                tx.executeSql("Insert into Demo VALUES (7, 'RTYT', 'DFGABC')");*/
+                
+                tx.executeSql('SELECT * FROM Asistentes', [], querySuccess, errorCB);
+                tx.executeSql('SELECT * FROM Asistentes', [], querySuccess1, errorCB);
+            }
+
+            function getData(last) {
+
+                db.transaction(function (tx) {
+
+                    var query = "SELECT firstname, lastname, acctNo FROM customerAccounts WHERE lastname = ?";
+
+                    tx.executeSql(query, [last], function (tx, resultSet) {
+
+                        for(var x = 0; x < resultSet.rows.length; x++) {
+                            console.log("First name: " + resultSet.rows.item(x).firstname +
+                                ", Acct: " + resultSet.rows.item(x).acctNo);
+                        }
+                    },
+                    function (tx, error) {
+                        console.log('SELECT error: ' + error.message);
+                    });
+                }, function (error) {
+                    console.log('transaction error: ' + error.message);
+                }, function () {
+                    console.log('transaction ok');
+                });
+            }
+            
+            function querySuccess(tx, results) {
+                //alert("Returned rows = " + results.rows.length);
+                var s = "<table>";
+                for(var i=0; i< results.rows.length; i++) {
+                        s += "<tr><td>" + results.rows.item(i).idPersona + "</td><td>" + results.rows.item(i).Nombre + "</td><td>" + results.rows.item(i).ApellidoPaterno + "</td></tr>";                       
+                    //alert("ID : " + results.rows.item(i).id + " Name : " + results.rows.item(i).name + " Address : " + results.rows.item(i).address);
+                }
+                s += "</table>";
+                
+                document.getElementById("tbl").innerHTML = s;               
+            }
+            
+            function querySuccess1(tx, result) {
+                alert("Second Query : " + result.rows.length);
+            }
+            
+            function errorCB(err) {
+                alert(err.code);        
+            }
+            
+            function successCB() {
+                alert("DB operation completed successfully.");          
+            }
+
+            function goSearch() {
+                var db = window.openDatabase("Database", "1.0", "Informe", 2000000);
+                db.transaction(searchQueryDB, errorCB);
+            }
+
+            function searchQueryDB(tx) {
+                tx.executeSql("SELECT * FROM Asistentes",
+                        [], querySuccess1, errorCB);
+            }
+            
+        </script>
     </head>
     <!-- end::Head -->
     <!-- end::Body -->
@@ -208,7 +293,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                                                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
                                                     <label >
                                                         &nbsp
                                                     </label>
@@ -222,11 +307,11 @@
                                                     </a>
                                                 </div>
 
-                                                <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" style="margin-left: 20px;">
+                                                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" style="margin-left: 20px;">
                                                     <label >
                                                         &nbsp
                                                     </label>
-                                                    <a href="javascript:;" class="btn btn-info m-btn m-btn--icon" onclick="informeGob.initTabla();">
+                                                    <a href="javascript:;" class="btn btn-info m-btn m-btn--icon" onclick="goSearch();">
                                                         <span>
                                                             <i class="la la-search"></i>
                                                             <span>
